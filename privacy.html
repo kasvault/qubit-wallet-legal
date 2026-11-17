@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qubit Wallet — Privacy Policy</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#07090c; color:#e6edf3; font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:64px 24px 96px; }
+  h1 { font-size:30px; line-height:1.25; margin:0 0 8px; letter-spacing:-0.01em; }
+  .sub { color:#8b98a5; margin:0 0 40px; font-size:14px; }
+  h2 { font-size:17px; margin:36px 0 10px; color:#fff; letter-spacing:0.01em; }
+  p, li { color:#c9d4de; }
+  ul { padding-left:20px; }
+  code { background:#121820; border:1px solid #1e2733; border-radius:4px; padding:1px 5px; font-size:13px; color:#9ff0c9; }
+  a { color:#66d9a3; }
+  footer { margin-top:56px; padding-top:20px; border-top:1px solid #1e2733; color:#6f7d8a; font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Qubit Wallet — Privacy Policy</h1>
+  <p class="sub">Last updated: 17 November 2026 · Applies to the Qubit Wallet browser extension (Chrome / Edge).</p>
+
+  <p>Qubit Wallet is a browser extension that stores a Qubitcoin (QTC) key on your own device. We do not operate user accounts and we do not collect, transmit or store personal data on our servers.</p>
+
+  <h2>What stays on your device</h2>
+  <p>Your encrypted seed, your QTC address, your transaction history and your settings are stored in the browser's local extension storage. They never leave your device unless you export them yourself.</p>
+
+  <h2>What leaves your device</h2>
+  <p>To display balances and to broadcast transactions, the extension queries the public Qubitcoin explorer at <code>explorer-api.superquantum.io</code>. Those requests contain your address and the signed transaction you choose to send, which is the same information any blockchain publishes. We add no identifiers, no cookies and no analytics.</p>
+
+  <h2>Websites</h2>
+  <p>Sites can request a connection through the <code>window.qtc</code> provider. A site only receives your public address after you accept, and a transaction only happens after you confirm it in the approval window. A site can never read your seed or your password.</p>
+
+  <h2>Permissions and why they exist</h2>
+  <ul>
+    <li><strong>storage</strong> — keeps the encrypted wallet locally on your device.</li>
+    <li><strong>explorer-api.superquantum.io</strong> — reads balances and UTXOs and broadcasts signed transactions. This is the only network endpoint the extension talks to.</li>
+    <li><strong>Content script on web pages</strong> — defines the <code>window.qtc</code> provider so swap and dApp sites can request a connection or a signature, the same pattern used by other browser wallets. Wallet-internal methods are refused outside the extension.</li>
+  </ul>
+
+  <h2>Third parties</h2>
+  <p>We do not sell, rent or share data with third parties. There are no advertising or tracking services in the extension.</p>
+
+  <h2>Your control</h2>
+  <p>You can delete the wallet and all local data at any time by removing the extension or using the lock and reset options. Keep a backup of your recovery phrase: without it, funds cannot be recovered by anyone, including us.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the updated version will be published at this address with a new date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: use the contact address published on the Qubit Wallet listing page.</p>
+
+  <footer>Qubit Wallet · non-custodial Qubitcoin (QTC) wallet · this page contains no trackers.</footer>
+</main>
+</body>
+</html>
