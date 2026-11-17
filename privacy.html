@@ -27,7 +27,7 @@
   <p>Qubit Wallet is a browser extension that stores a Qubitcoin (QTC) key on your own device. We do not operate user accounts and we do not collect, transmit or store personal data on our servers.</p>
 
   <h2>What stays on your device</h2>
-  <p>Your encrypted seed, your QTC address, your transaction history and your settings are stored in the browser's local extension storage. They never leave your device unless you export them yourself.</p>
+  <p>Your encrypted seed, your QTC addresses, your transaction history, the list of sites you connected and your settings are stored in the browser's local extension storage. They never leave your device unless you export them yourself.</p>
 
   <h2>What leaves your device</h2>
   <p>To display balances and to broadcast transactions, the extension queries the public Qubitcoin explorer at <code>explorer-api.superquantum.io</code>. Those requests contain your address and the signed transaction you choose to send, which is the same information any blockchain publishes. We add no identifiers, no cookies and no analytics.</p>
@@ -35,9 +35,12 @@
   <h2>Websites</h2>
   <p>Sites can request a connection through the <code>window.qtc</code> provider. A site only receives your public address after you accept, and a transaction only happens after you confirm it in the approval window. A site can never read your seed or your password.</p>
 
+  <h2>Connected sites</h2>
+  <p>When you approve a site, the extension stores that site's origin (the domain name) locally, so the wallet can answer future requests from it without asking you again for every read. You can revoke a single site or all of them at any time in the wallet, and removing a site deletes its entry. This list stays on your device and is never sent anywhere.</p>
+
   <h2>Permissions and why they exist</h2>
   <ul>
-    <li><strong>storage</strong> — keeps the encrypted wallet locally on your device.</li>
+    <li><strong>storage</strong> — keeps the encrypted wallet, the derived addresses, the list of connected sites and the transaction cache locally on your device.</li>
     <li><strong>explorer-api.superquantum.io</strong> — reads balances and UTXOs and broadcasts signed transactions. This is the only network endpoint the extension talks to.</li>
     <li><strong>Content script on web pages</strong> — defines the <code>window.qtc</code> provider so swap and dApp sites can request a connection or a signature, the same pattern used by other browser wallets. Wallet-internal methods are refused outside the extension.</li>
   </ul>
