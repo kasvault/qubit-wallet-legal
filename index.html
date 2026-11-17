@@ -3,58 +3,196 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qubit Wallet — Privacy Policy</title>
+<title>Qubit Wallet — Qubitcoin (QTC) wallet for your browser</title>
+<meta name="description" content="Qubit Wallet is a free, non-custodial Qubitcoin (QTC) wallet for Chrome and Chromium browsers. Your keys stay on your device.">
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
-  body { margin:0; background:#07090c; color:#e6edf3; font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  main { max-width:760px; margin:0 auto; padding:64px 24px 96px; }
-  h1 { font-size:30px; line-height:1.25; margin:0 0 8px; letter-spacing:-0.01em; }
-  .sub { color:#8b98a5; margin:0 0 40px; font-size:14px; }
-  h2 { font-size:17px; margin:36px 0 10px; color:#fff; letter-spacing:0.01em; }
-  p, li { color:#c9d4de; }
-  ul { padding-left:20px; }
-  code { background:#121820; border:1px solid #1e2733; border-radius:4px; padding:1px 5px; font-size:13px; color:#9ff0c9; }
-  a { color:#66d9a3; }
-  footer { margin-top:56px; padding-top:20px; border-top:1px solid #1e2733; color:#6f7d8a; font-size:13px; }
+  :root{
+    --bg:#0e1116; --panel:#121722; --line:#2a3038; --line-2:#1a2a4a;
+    --text:#e6e6e6; --muted:#9aa3af; --green:#4ade80; --blue:#7dd3fc; --red:#f87171;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(26,42,74,.55), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(15,43,30,.55), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.65; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--green);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  header.top{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(14,17,22,.82);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:.02em}
+  .dot{width:14px;height:14px;border-radius:4px;background:var(--green);box-shadow:0 0 14px rgba(74,222,128,.55)}
+  nav{margin-left:auto;display:flex;gap:18px;font-size:14px}
+  nav a{color:var(--muted)}
+  nav a:hover{color:var(--text);text-decoration:none}
+  @media (max-width:640px){nav{display:none}}
+  .hero{padding:72px 0 44px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin:0 0 14px}
+  h1{font-size:clamp(30px,5vw,46px);line-height:1.14;margin:0 0 16px;letter-spacing:-.02em}
+  .lead{font-size:18px;color:#c3cad3;max-width:62ch;margin:0 0 28px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line-2);background:#141b28;color:var(--text)}
+  .btn:hover{text-decoration:none;border-color:var(--green);color:#fff}
+  .btn.primary{background:var(--green);border-color:var(--green);color:#04150c}
+  .btn.primary:hover{background:#5ee98f;color:#04150c}
+  .hint{font-size:13px;color:var(--muted);font-family:var(--mono)}
+  section{padding:44px 0;border-top:1px solid var(--line)}
+  h2{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 24px;font-size:15px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .card h3{font-size:15px;margin:0 0 8px;color:#fff}
+  .card p{margin:0;font-size:14px;color:#c3cad3}
+  .card .tag{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px}
+  code{font-family:var(--mono);font-size:13px;background:#0b1017;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--blue)}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+  details summary{cursor:pointer;font-weight:600;font-size:15px;color:#fff}
+  details p{margin:10px 0 0;font-size:14px;color:#c3cad3}
+  .support{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .warn{border-left:3px solid var(--red);background:rgba(248,113,113,.06);padding:14px 16px;border-radius:8px;font-size:14px;color:#f4c9c9}
+  footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--muted);font-size:13px}
+  footer .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  footer .sp{margin-left:auto;font-family:var(--mono);font-size:12px}
 </style>
 </head>
 <body>
-<main>
-  <h1>Qubit Wallet — Privacy Policy</h1>
-  <p class="sub">Last updated: 17 November 2026 · Applies to the Qubit Wallet browser extension (Chrome / Edge).</p>
 
-  <p>Qubit Wallet is a browser extension that stores a Qubitcoin (QTC) key on your own device. We do not operate user accounts and we do not collect, transmit or store personal data on our servers.</p>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> Qubit Wallet</div>
+    <nav>
+      <a href="#what">What it does</a>
+      <a href="#security">Security</a>
+      <a href="#faq">FAQ</a>
+      <a href="#support">Support</a>
+    </nav>
+  </div>
+</header>
 
-  <h2>What stays on your device</h2>
-  <p>Your encrypted seed, your QTC address, your transaction history and your settings are stored in the browser's local extension storage. They never leave your device unless you export them yourself.</p>
+<div class="wrap">
 
-  <h2>What leaves your device</h2>
-  <p>To display balances and to broadcast transactions, the extension queries the public Qubitcoin explorer at <code>explorer-api.superquantum.io</code>. Those requests contain your address and the signed transaction you choose to send, which is the same information any blockchain publishes. We add no identifiers, no cookies and no analytics.</p>
+  <div class="hero">
+    <p class="kicker">Qubitcoin · QTC · Browser extension</p>
+    <h1>A non-custodial QTC wallet that lives in your browser.</h1>
+    <p class="lead">Create a wallet, back it up with twelve words, and send or receive Qubitcoin without an account, an email address or a company holding your coins. Your keys are generated and encrypted on your own device.</p>
+    <div class="actions">
+      <a class="btn primary" href="#install">Install</a>
+      <a class="btn" href="qtc-wallet-ext-v0.3.2.zip">Download the package (v0.3.2)</a>
+      <a class="btn" href="privacy.html">Privacy policy</a>
+    </div>
+    <p class="hint">Chrome and Chromium browsers · version 0.3.2 · free, no account</p>
+  </div>
 
-  <h2>Websites</h2>
-  <p>Sites can request a connection through the <code>window.qtc</code> provider. A site only receives your public address after you accept, and a transaction only happens after you confirm it in the approval window. A site can never read your seed or your password.</p>
+  <section id="what">
+    <h2>What it does</h2>
+    <p class="sub">A small wallet with one job: hold a QTC key safely and use it when you decide to.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Wallet</span>
+        <h3>Create or import</h3>
+        <p>Generate a new twelve-word wallet or bring an existing one in by typing its recovery phrase.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Payments</span>
+        <h3>Send and receive</h3>
+        <p>Show your address, check incoming payments, and send QTC with the network fee shown before you confirm.</p>
+      </div>
+      <div class="card">
+        <span class="tag">History</span>
+        <h3>Full transaction list</h3>
+        <p>Incoming, outgoing and self-transfers, each with the complete 64-character transaction ID.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Sites</span>
+        <h3>Connect to swap sites</h3>
+        <p>Websites reach the wallet through the <code>window.qtc</code> provider. Every signature opens an approval window first.</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>Permissions and why they exist</h2>
-  <ul>
-    <li><strong>storage</strong> — keeps the encrypted wallet locally on your device.</li>
-    <li><strong>explorer-api.superquantum.io</strong> — reads balances and UTXOs and broadcasts signed transactions. This is the only network endpoint the extension talks to.</li>
-    <li><strong>Content script on web pages</strong> — defines the <code>window.qtc</code> provider so swap and dApp sites can request a connection or a signature, the same pattern used by other browser wallets. Wallet-internal methods are refused outside the extension.</li>
-  </ul>
+  <section id="install">
+    <h2>Install</h2>
+    <p class="sub">From the Chrome Web Store, or manually from the package file while the listing is still in review.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Option 1</span>
+        <h3>Chrome Web Store</h3>
+        <p>The listing is in review. Once it is live, the install button appears here and the extension updates itself automatically.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Option 2</span>
+        <h3>Manual install</h3>
+        <p>Download <a href="qtc-wallet-ext-v0.3.2.zip">qtc-wallet-ext-v0.3.2.zip</a>, unpack it, then open <code>chrome://extensions</code>, switch on Developer mode and choose “Load unpacked”.</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>Third parties</h2>
-  <p>We do not sell, rent or share data with third parties. There are no advertising or tracking services in the extension.</p>
+  <section id="security">
+    <h2>Security, in plain words</h2>
+    <p class="sub">No custody, no recovery desk, no background signing.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Keys</span>
+        <h3>On your device only</h3>
+        <p>The recovery phrase is encrypted with AES-GCM 256 and a key derived from your password with PBKDF2-SHA256 over 600,000 rounds. It never leaves the browser.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Approval</span>
+        <h3>Nothing signs silently</h3>
+        <p>A website request opens its own window with the details. If you do not confirm there, nothing is signed.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Network</span>
+        <h3>One endpoint</h3>
+        <p>Balances and broadcasts go through the public QTC explorer only. No analytics, no tracking, no ads.</p>
+      </div>
+    </div>
+    <p class="warn" style="margin-top:16px">Nobody can restore a lost recovery phrase, including us. Twelve words on paper, in two places, before you receive anything.</p>
+  </section>
 
-  <h2>Your control</h2>
-  <p>You can delete the wallet and all local data at any time by removing the extension or using the lock and reset options. Keep a backup of your recovery phrase: without it, funds cannot be recovered by anyone, including us.</p>
+  <section id="faq">
+    <h2>FAQ</h2>
+    <p class="sub">The five questions that come up first.</p>
+    <details><summary>Is this Bitcoin?</summary><p>No. Qubitcoin is an independent chain derived from Bitcoin. It uses the same address format, but the coins are different. Never send BTC to a QTC address or the other way round.</p></details>
+    <details><summary>What does a transaction cost?</summary><p>The wallet calculates a network fee of 1000 satoshi per input and shows it before you confirm. That fee goes to miners, not to us.</p></details>
+    <details><summary>Where do I get QTC?</summary><p>From an exchange, a swap site or another person. The extension does not sell coins.</p></details>
+    <details><summary>What happens if I forget my password?</summary><p>You restore the wallet from the twelve-word recovery phrase and set a new password. The old encrypted vault is simply discarded.</p></details>
+    <details><summary>Does a website ever see my seed?</summary><p>No. Requests for the seed, the password or the backup file are refused outside the wallet itself.</p></details>
+  </section>
 
-  <h2>Changes</h2>
-  <p>If this policy changes, the updated version will be published at this address with a new date.</p>
+  <section id="support">
+    <h2>Support</h2>
+    <p class="sub">Bugs, questions, feature requests: tell us and it goes on the list.</p>
+    <div class="support">
+      <div class="card">
+        <span class="tag">Direct</span>
+        <h3>Message on X</h3>
+        <p><a href="https://x.com/KaspaVault" target="_blank" rel="noopener">@KaspaVault</a> — direct messages are open for wallet issues.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Listing</span>
+        <h3>Chrome Web Store</h3>
+        <p>Use the support tab on the extension listing, or the contact address shown there.</p>
+      </div>
+    </div>
+    <p class="warn" style="margin-top:16px">No support person will ever ask for your recovery phrase or password. Anyone who does is trying to take your coins.</p>
+  </section>
 
-  <h2>Contact</h2>
-  <p>Questions about this policy: use the contact address published on the Qubit Wallet listing page.</p>
+  <footer>
+    <div class="row">
+      <span>Qubit Wallet · <a href="privacy.html">Privacy</a> · <a href="https://kvault-otc-desk.netlify.app/">OTC Desk</a></span>
+      <span class="sp">v0.3.2 · updated 17 Nov 2026</span>
+    </div>
+  </footer>
+</div>
 
-  <footer>Qubit Wallet · non-custodial Qubitcoin (QTC) wallet · this page contains no trackers.</footer>
-</main>
 </body>
 </html>
